@@ -1,0 +1,248 @@
+import { Navigation } from "@/components/navigation"
+import { Footer } from "@/components/footer"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
+import {
+  Calculator,
+  Building2,
+  Droplets,
+  Wind,
+  Ratio,
+  ArrowRight,
+  CheckCircle,
+  Users,
+  Zap,
+  Shield,
+} from "lucide-react"
+
+export default function HomePage() {
+  const professions = [
+    {
+      title: "Civil Engineers",
+      description:
+        "Access powerful tools for structural analysis, concrete and steel material estimation, and comprehensive project planning.",
+      icon: Building2,
+      tools: ["Material Estimator", "Load Calculator", "Unit Converter", "Project Planner"],
+      color: "bg-primary/10 text-primary",
+    },
+    {
+      title: "Designers & Planners",
+      description:
+        "Utilize our scale calculator for architectural models and technical drawings, and visualize complex designs with our interactive 3D viewer.",
+      icon: Ratio,
+      tools: ["Scale Calculator", "Grid Reference", "3D Model Viewer", "Unit Converter"],
+      color: "bg-secondary/10 text-secondary",
+    },
+    {
+      title: "Plumbers",
+      description:
+        "Simplify complex plumbing tasks with calculators for pipe sizing based on flow rate, water pressure analysis, and drainage system design.",
+      icon: Droplets,
+      tools: ["Pipe Sizing", "Flow Calculator", "Pressure Tools", "Material Guide"],
+      color: "bg-chart-3/10 text-chart-3",
+    },
+    {
+      title: "A/C Workers",
+      description:
+        "Perform accurate HVAC calculations, including cooling load (BTU) estimation, duct sizing, and overall system efficiency analysis.",
+      icon: Wind,
+      tools: ["BTU Calculator", "Load Estimator", "Duct Sizing", "Efficiency Tools"],
+      color: "bg-chart-2/10 text-chart-2",
+    },
+  ]
+
+  const features = [
+    {
+      icon: Calculator,
+      title: "Professional Tools",
+      description: "Industry-standard calculators and utilities designed by engineers for engineers",
+    },
+    {
+      icon: Zap,
+      title: "Lightning Fast",
+      description: "Our interactive tools provide real-time results as you type, speeding up your workflow.",
+    },
+    {
+      icon: Shield,
+      title: "Reliable & Accurate",
+      description: "Built on tested formulas and industry standards you can trust for critical engineering work.",
+    },
+    {
+      icon: Users,
+      title: "Multi-Trade Support",
+      description:
+        "Whether you're in civil, mechanical, or architectural fields, our versatile toolset supports a wide range of disciplines.",
+    },
+  ]
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <Navigation />
+      <main className="flex-1">
+        <section className="relative bg-gradient-to-b from-background to-muted/50 py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <Badge variant="secondary" className="mb-6 text-sm font-medium">
+                Professional Engineering Utilities
+              </Badge>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-6 text-balance">
+                Essential Engineering Utilities for <span className="text-primary">Every Trade</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8 text-pretty">
+                From civil engineers and draftsmen to plumbers and HVAC technicians, Enginu provides a comprehensive
+                suite of calculators, converters, and viewers. All your essential tools in one professional, accessible
+                platform
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="text-lg px-8">
+                  <Link href="/tools">
+                    Explore Tools <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="text-lg px-8 bg-transparent">
+                  <Link href="/3d-viewer">Try 3D Viewer</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Built for Every Trade</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Enginu offers specialized tools and calculators meticulously designed for your specific engineering
+                discipline, ensuring you have the right utility for every task.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {professions.map((profession, index) => {
+                const IconComponent = profession.icon
+                return (
+                  <Card
+                    key={index}
+                    className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20"
+                  >
+                    <CardHeader>
+                      <div className="flex items-center gap-4 mb-4">
+                        <div className={`p-3 rounded-lg ${profession.color}`}>
+                          <IconComponent className="h-6 w-6" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl">{profession.title}</CardTitle>
+                          <CardDescription className="text-base">{profession.description}</CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-2 gap-2">
+                        {profession.tools.map((tool, toolIndex) => (
+                          <div key={toolIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
+                            <span>{tool}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-32 bg-muted/50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Choose Enginu?</h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                We focus on creating professional-grade tools designed with three core principles: precision, speed,
+                and reliability. Here’s why professionals trust Enginu for their daily tasks.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {features.map((feature, index) => {
+                const IconComponent = feature.icon
+                return (
+                  <div key={index} className="text-center group">
+                    <div className="bg-primary/10 text-primary p-4 rounded-lg w-16 h-16 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <IconComponent className="h-8 w-8" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-32">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+              <div>
+                <Badge variant="secondary" className="mb-4">
+                  Featured Tool
+                </Badge>
+                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Powerful 3D Model Viewer</h2>
+                <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+                  Upload and interact with your 3D designs directly in the browser. Our viewer is built for speed and
+                  supports a wide range of file formats, making it perfect for quick design reviews, client
+                  presentations, or visualizing CAD files on the go.
+                </p>
+                <ul className="space-y-3 mb-8">
+                  <li className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-muted-foreground">Supports GLB, GLTF, STL, and 3DS files.</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-muted-foreground">Interactive controls: orbit, zoom, and pan.</span>
+                  </li>
+                  <li className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                    <span className="text-muted-foreground">Adjustable lighting, colors, and scene grid.</span>
+                  </li>
+                </ul>
+                <Button asChild size="lg">
+                  <Link href="/3d-viewer">
+                    Launch Viewer <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </Button>
+              </div>
+              <div className="bg-muted rounded-lg p-4 border border-border aspect-video flex items-center justify-center">
+                <p className="text-muted-foreground/50 text-lg">Interactive 3D Viewer in Action</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-32">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Ready to Get Started?</h2>
+            <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+              Join thousands of engineering professionals who trust Enginu for their daily calculations and project
+              needs
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="text-lg px-8">
+                <Link href="/tools">
+                  Start Using Tools <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="text-lg px-8 bg-transparent">
+                <Link href="/about">Learn More</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
