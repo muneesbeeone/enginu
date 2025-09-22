@@ -1,14 +1,11 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+const basePath = process.env.NEXT_BASE_PATH || ""; // e.g. "/repo-name" for GitHub Pages project sites
 
-export default nextConfig
+const nextConfig = {
+  reactStrictMode: true,
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
+};
+
+export default nextConfig;
