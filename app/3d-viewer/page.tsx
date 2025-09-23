@@ -4,9 +4,10 @@ import { Suspense, useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { Canvas, useLoader } from "@react-three/fiber"
 import { OrbitControls, TorusKnot, useGLTF, Bounds, Text } from "@react-three/drei"
-import { useControls } from "leva"
-import { STLLoader } from "three/examples/jsm/loaders/STLLoader"
-import { TDSLoader } from "three/examples/jsm/loaders/TDSLoader"
+import { useControls, folder } from "leva"
+import { STLLoader } from "three-stdlib"
+import { TDSLoader } from "three-stdlib"
+
 import { ArrowLeft, Upload } from "lucide-react"
 import * as THREE from "three"
 import { Button } from "@/components/ui/button"
@@ -108,19 +109,20 @@ function Loader() {
 
 export default function ViewerPage() {
   const [model, setModel] = useState<{ url: string; extension: string } | null>(null)
-  const { ambientIntensity, directionalIntensity, modelColor, showGrid } = useControls({
-    "Scene Controls": {
+  const { ambientIntensity, directionalIntensity, modelColor, showGrid, showAxes } = useControls({
+    "Scene Controls": folder({
       ambientIntensity: { value: 1.5, min: 0, max: 5, step: 0.1, label: "Ambient Light" },
       directionalIntensity: { value: 1, min: 0, max: 5, step: 0.1, label: "Directional Light" },
       showGrid: { value: true, label: "Show Grid" },
-    },
-    "Model Controls": {
+      showAxes: { value: true, label: "Show Axes" },
+    }),
+    "Model Controls": folder({
       modelColor: {
         value: "#ff7f50", // A nice default like coral
         label: "Color",
         // Note: This will override any existing textures on GLB/GLTF models.
       },
-    },
+    }),
   })
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -188,6 +190,7 @@ export default function ViewerPage() {
             <ambientLight intensity={ambientIntensity} />
             <directionalLight position={[10, 10, 5]} intensity={directionalIntensity} />
             {showGrid && <gridHelper args={[100, 100]} />}
+            {showAxes && <axesHelper args={[5]} />}
             <Model
               url={model?.url ?? null}
               extension={model?.extension ?? null}

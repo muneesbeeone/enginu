@@ -27,7 +27,6 @@ export function MaterialEstimator() {
 
     switch (projectType) {
       case "foundation":
-        concreteRatio = 1
         steelRatio = 60
         break
       case "slab":

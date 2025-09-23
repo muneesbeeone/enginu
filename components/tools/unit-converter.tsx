@@ -65,9 +65,9 @@ export function UnitConverter() {
     const value = Number.parseFloat(inputValue)
     if (isNaN(value)) return null
 
-    const fromFactor =
-      conversions[category].units[fromUnit as keyof (typeof conversions)[typeof category]["units"]].factor
-    const toFactor = conversions[category].units[toUnit as keyof (typeof conversions)[typeof category]["units"]].factor
+    const units = conversions[category].units
+    const fromFactor = (units as Record<string, { factor: number }>)[fromUnit]?.factor
+    const toFactor = (units as Record<string, { factor: number }>)[toUnit]?.factor
 
     if (!fromFactor || !toFactor) return null
 
