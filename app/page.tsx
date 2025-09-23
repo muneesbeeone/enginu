@@ -1,3 +1,9 @@
+"use client"
+
+import { Suspense, useRef } from "react"
+import { Canvas, useFrame } from "@react-three/fiber"
+import { OrbitControls, useGLTF } from "@react-three/drei"
+import * as THREE from "three"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -16,6 +22,25 @@ import {
   Zap,
   Shield,
 } from "lucide-react"
+
+function Homepage3DViewer() {
+  // This component assumes a file named `gear.glb` is in your `/public` directory.
+  // You can download a sample gear model or use your own.
+  const { scene } = useGLTF("/los_angeles_building_v2.glb")
+  const ref = useRef<THREE.Group>(null!)
+
+  // Auto-rotate the model for a dynamic presentation
+  useFrame((_state, delta) => {
+    if (ref.current) {
+      ref.current.rotation.y += delta * 0.1
+    }
+  })
+
+  return (
+    // Adjust scale and position to fit your model
+    <primitive ref={ref} object={scene} scale={0.06} position={[0, -1.8, 0]} />
+  )
+}
 
 export default function HomePage() {
   const professions = [
@@ -215,8 +240,21 @@ export default function HomePage() {
                   </Link>
                 </Button>
               </div>
-              <div className="bg-muted rounded-lg p-4 border border-border aspect-video flex items-center justify-center">
-                <p className="text-muted-foreground/50 text-lg">Interactive 3D Viewer in Action</p>
+              <div className="bg-muted rounded-lg border border-border aspect-video overflow-hidden">
+                <Suspense
+                  fallback={
+                    <div className="flex h-full w-full items-center justify-center">
+                      <p className="text-muted-foreground">Loading 3D Preview...</p>
+                    </div>
+                  }
+                >
+                  <Canvas camera={{ position: [0, -1, 5], fov: 50 }}>
+                    <ambientLight intensity={2.5} />
+                    <directionalLight position={[10, 10, 5]} intensity={3} />
+                    <Homepage3DViewer />
+                    <OrbitControls enableZoom={true} enablePan={false} />
+                  </Canvas>
+                </Suspense>
               </div>
             </div>
           </div>

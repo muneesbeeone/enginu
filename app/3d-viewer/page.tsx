@@ -16,12 +16,12 @@ import { Input } from "@/components/ui/input"
 // Helper components for loading different model types
 function GltfModel({ url, color }: { url: string; color: string }) {
   const { scene } = useGLTF(url)
-  // This overrides all materials in the GLTF file with the selected color.
-  // This is useful for un-textured models but will hide existing textures.
+  // This applies the selected color to meshes that don't have a texture,
+  // preserving existing materials and textures.
   useMemo(() => {
     scene.traverse(child => {
-      if (child instanceof THREE.Mesh) {
-        child.material = new THREE.MeshStandardMaterial({ color })
+      if (child instanceof THREE.Mesh && child.material && !Array.isArray(child.material) && !child.material.map) {
+        child.material = new THREE.MeshStandardMaterial({ color });
       }
     })
   }, [scene, color])
@@ -46,8 +46,8 @@ function TdsModel({ url, color }: { url: string; color: string }) {
   // visible material. This replaces any existing materials to guarantee visibility.
   useMemo(() => {
     model.traverse(child => {
-      if (child instanceof THREE.Mesh) {
-        child.material = new THREE.MeshStandardMaterial({ color })
+      if (child instanceof THREE.Mesh && child.material && !Array.isArray(child.material) && !child.material.map) {
+        child.material = new THREE.MeshStandardMaterial({ color });
       }
     })
   }, [model, color])
@@ -120,7 +120,6 @@ export default function ViewerPage() {
       modelColor: {
         value: "#ff7f50", // A nice default like coral
         label: "Color",
-        // Note: This will override any existing textures on GLB/GLTF models.
       },
     }),
   })
