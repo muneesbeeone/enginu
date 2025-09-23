@@ -15,9 +15,20 @@ export const metadata: Metadata = {
     "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers. Unit converters, material estimators, 3D viewer, and more.",
   generator: "Enginu",
   keywords: [
+    // General
     "engineering",
     "utilities",
+    "engineering formulas",
+    "online engineering tools",
+    "technical calculator",
+    "scientific calculator",
+    "dimensional analysis",
+    "conversion chart",
+    // Trades
     "civil engineering",
+    "structural engineering",
+    "mechanical engineering",
+    "electrical engineering",
     "drafting",
     "plumbing",
     "HVAC",
@@ -25,10 +36,19 @@ export const metadata: Metadata = {
     "calculators",
     "material estimation",
     "3D viewer",
+    // Specific Tools & Concepts
     "A/C",
     "air conditioning",
-    "mechanical engineering",
-    "electrical engineering",
+    "beam calculator",
+    "concrete calculator",
+    "steel weight calculator",
+    "fluid dynamics",
+    "thermodynamics",
+    "Ohm's law",
+    "pipe flow calculator",
+    "duct sizing",
+    "BTU calculator",
+    // Broader Industries
     "construction",
     "building",
     "architecture",
@@ -102,7 +122,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-       <head>
+      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <Script
           id="adsense-script"
           async
@@ -110,8 +130,6 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4391323106927085"
           crossOrigin="anonymous"
         />
-      </head>
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />

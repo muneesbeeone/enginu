@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import {
   Calculator,
   Building2,
@@ -100,6 +101,34 @@ export function HomePageClient() {
       title: "Multi-Trade Support",
       description:
         "Whether you're in civil, mechanical, or architectural fields, our versatile toolset supports a wide range of disciplines.",
+    },
+  ]
+
+  const faqs = [
+    {
+      question: "What is Enginu?",
+      answer:
+        "Enginu is a free, web-based suite of professional utilities designed for engineers, draftsmen, and technicians across various trades. It includes tools like a 3D model viewer, unit converters, and specialized calculators.",
+    },
+    {
+      question: "Are the tools on Enginu free to use?",
+      answer:
+        "Yes, all tools currently available on Enginu are completely free to use. Our goal is to provide accessible and high-quality utilities for professionals and students.",
+    },
+    {
+      question: "Do you store my uploaded 3D models?",
+      answer:
+        "No, we do not. The 3D viewer is a client-side tool, meaning your files are processed directly in your browser. Your models are never uploaded to or stored on our servers, ensuring your intellectual property remains private.",
+    },
+    {
+      question: "What file formats does the 3D viewer support?",
+      answer:
+        "Our 3D viewer supports several common formats, including GLB (.glb), GLTF (.gltf), STL (.stl), and 3DS (.3ds). We are always working to expand support for more formats.",
+    },
+    {
+      question: "Can I use these tools for professional work?",
+      answer:
+        "While our tools are built with industry standards in mind, they are provided 'as is' without warranty. They are excellent for quick estimations, visualizations, and educational purposes. For critical applications, we always recommend verifying results with a certified professional or primary-source documentation.",
     },
   ]
 
@@ -264,6 +293,27 @@ export function HomePageClient() {
                 </Suspense>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="py-20 lg:py-32 bg-muted/50">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+              </p>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg text-left">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
 

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
     "The ultimate hub for engineering professionals. Access a free suite of tools including a 3D model viewer (GLB, STL), unit converters, and specialized calculators for civil, mechanical, and architectural trades.",
   keywords: [
     "engineering calculators",
+    "engineering software",
     "free 3d viewer",
     "online unit converter",
     "civil engineering tools",
@@ -16,6 +17,10 @@ export const metadata: Metadata = {
     "architectural design tools",
     "HVAC calculator",
     "plumbing calculator",
+    "construction calculator",
+    "online cad tools",
+    "engineering web app",
+    "free engineering tools",
   ],
 }
 
