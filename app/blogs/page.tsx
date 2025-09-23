@@ -106,7 +106,7 @@ export default function BlogPage() {
       <div className="mt-12 flex justify-center">
         <AdSense
           slot="9783500294"
-          className="max-w-728px w-full"
+          className="max-w-[728px] w-full"
           adType="banner"
         />
       </div>

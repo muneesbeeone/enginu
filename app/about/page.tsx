@@ -52,7 +52,7 @@ export default function AboutPage() {
       <div className="mt-6 flex justify-center">
           <AdSense
             slot="9783500294"
-            className="max-w-728px w-full"
+            className="max-w-[728px] w-full"
             adType="banner"
           />
         </div>
