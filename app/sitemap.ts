@@ -36,10 +36,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/terms/`,
+      // Note: The /about page is linked from the homepage.
+      url: `${baseUrl}/blogs/`,
       lastModified: new Date(),
       changeFrequency: "yearly",
-      priority: 0.3,
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.2,
     },
     {
       url: `${baseUrl}/privacy/`,
