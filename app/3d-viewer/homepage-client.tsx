@@ -209,10 +209,10 @@ export function HomePageClient() {
             </div>
           </div>
         </section>
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex mx-auto justify-center">
           <AdSense
             slot="9783500294"
-            className="max-w-728px w-full"
+            className="max-w-[728px] w-full"
             adType="banner"
           />
         </div>
@@ -339,7 +339,7 @@ export function HomePageClient() {
         <div className="mt-6 flex justify-center">
           <AdSense
             slot="9783500294"
-            className="max-w-728px w-full"
+            className="max-w-[728px] w-full"
             adType="banner"
           />
         </div>
