@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
+import AdSense from "@/components/AdSense"
 
 export default function AboutPage() {
   return (
@@ -48,6 +49,13 @@ export default function AboutPage() {
           </div>
         </div>
       </main>
+      <div className="mt-6 flex justify-center">
+          <AdSense
+            slot="9783500294"
+            className="max-w-728px w-full"
+            adType="banner"
+          />
+        </div>
       <Footer />
     </div>
   )

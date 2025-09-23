@@ -7,6 +7,7 @@ import { PlumbingHelper } from "@/components/tools/plumbing-helper"
 import { ACHelper } from "@/components/tools/ac-helper"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Calculator, Building2, Ratio, Droplets, Thermometer } from "lucide-react"
+import AdSense from "@/components/AdSense"
 
 export default function ToolsPage() {
   return (
@@ -67,6 +68,13 @@ export default function ToolsPage() {
               <ACHelper />
             </TabsContent>
           </Tabs>
+          <div className="mt-6 flex justify-center">
+          <AdSense
+            slot="9783500294"
+            className="max-w-728px w-full"
+            adType="banner"
+          />
+        </div>
         </div>
       </main>
       <Footer />

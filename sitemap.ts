@@ -4,7 +4,7 @@ import { MetadataRoute } from "next"
 // If you are using a `basePath` in your next.config.mjs, you should include it here.
 // For example, if your domain is "example.com" and basePath is "/blog",
 // then baseUrl should be "https://example.com/blog".
-const baseUrl = "https://www.enginu.com"
+const baseUrl = "https://enginu.munees.co.in"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The trailing slashes are added to match the `trailingSlash: true` config in next.config.mjs

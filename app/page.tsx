@@ -17,16 +17,6 @@ export const metadata: Metadata = {
     "HVAC calculator",
     "plumbing calculator",
   ],
-  twitter: {
-    card: "summary_large_image",
-    title: "Enginu - Engineering Utilities for Everyone",
-    description: "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers.",
-    images: ["/og_image.png"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png"
-  },
 }
 
 export default function HomePage() {

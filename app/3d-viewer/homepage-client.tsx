@@ -22,6 +22,7 @@ import {
   Zap,
   Shield,
 } from "lucide-react"
+import AdSense from "@/components/AdSense"
 
 function Homepage3DViewer() {
   // This component assumes a file named `gear.glb` is in your `/public` directory.
@@ -179,7 +180,13 @@ export function HomePageClient() {
             </div>
           </div>
         </section>
-
+        <div className="mt-6 flex justify-center">
+          <AdSense
+            slot="9783500294"
+            className="max-w-728px w-full"
+            adType="banner"
+          />
+        </div>
         <section className="py-20 lg:py-32 bg-muted/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -279,6 +286,13 @@ export function HomePageClient() {
             </div>
           </div>
         </section>
+        <div className="mt-6 flex justify-center">
+          <AdSense
+            slot="9783500294"
+            className="max-w-728px w-full"
+            adType="banner"
+          />
+        </div>
       </main>
       <Footer />
     </div>

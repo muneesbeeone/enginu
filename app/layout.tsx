@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   // TODO: Make sure this is your production URL
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "Enginu",
     images: [
       {
-        url: "/og_image.png", // Must be an absolute URL. Will be resolved using metadataBase.
+        url: "/og_image.png", // Relative to metadataBase
         width: 1200,
         height: 630,
         alt: "Enginu - A suite of online tools for engineers.",
@@ -55,15 +56,19 @@ export const metadata: Metadata = {
     ],
     type: "website",
   },
+  robots: {
+    index: true,
+    follow: true,
+  },
   twitter: {
     card: "summary_large_image",
     title: "Enginu - Engineering Utilities for Everyone",
     description: "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers.",
-    images: ["/og_image.png"], // Must be an absolute URL. Will be resolved using metadataBase.
+    images: ["/og_image.png"], // Relative to metadataBase
   },
   icons: {
     icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png"
+    apple: "/apple-touch-icon.png",
   },
 }
 
@@ -72,16 +77,42 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Enginu",
+      url: "https://enginu.munees.co.in",
+      logo: "https://enginu.munees.co.in/og-image.png",
+      description:
+        "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers. Unit converters, material estimators, 3D viewer, and more.",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Enginu",
+      url: "https://enginu.munees.co.in",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://enginu.munees.co.in/tools?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ]
+
   return (
     <html lang="en">
-      <head>
-        <meta name="description" content="Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers." />
-        <meta name="keywords" content="engineering calculators, online unit converter, civil engineering tools, mechanical engineering software, architectural design tools, HVAC calculator, plumbing calculator" />
-        <meta name="author" content="Muhammed Munees" />
-        <meta name="robots" content="index, follow" />
-        <meta name="theme-color" content="#1A1D23" />
+       <head>
+        <Script
+          id="adsense-script"
+          async
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4391323106927085"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
         <Analytics />
       </body>
