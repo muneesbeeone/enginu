@@ -1,56 +1,55 @@
 import { MetadataRoute } from "next"
 
-// TODO: Replace with your production domain.
-// If you are using a `basePath` in your next.config.mjs, you should include it here.
-// For example, if your domain is "example.com" and basePath is "/blog",
-// then baseUrl should be "https://example.com/blog".
 const baseUrl = "https://enginu.munees.co.in"
 
+// Helper function to format date as YYYY-MM-DD
+function formatDate(date: Date): string {
+  return date.toISOString().split("T")[0]
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  // The trailing slashes are added to match the `trailingSlash: true` config in next.config.mjs
+  const today = formatDate(new Date())
+
   return [
     {
       url: `${baseUrl}/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      // Note: The /tools page is linked from the homepage.
       url: `${baseUrl}/tools/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
       url: `${baseUrl}/3d-viewer/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      // Note: The /about page is linked from the homepage.
       url: `${baseUrl}/about/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      // Note: The /about page is linked from the homepage.
       url: `${baseUrl}/blogs/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/terms/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "monthly",
       priority: 0.2,
     },
     {
       url: `${baseUrl}/privacy/`,
-      lastModified: new Date(),
+      lastModified: today,
       changeFrequency: "yearly",
       priority: 0.3,
     },
