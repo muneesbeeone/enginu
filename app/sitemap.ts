@@ -12,43 +12,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: `${baseUrl}/`,
+      url: `${baseUrl}`,
       lastModified: today,
       changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/tools/`,
+      url: `${baseUrl}/tools`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/3d-viewer/`,
+      url: `${baseUrl}/3d-viewer`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/about/`,
+      url: `${baseUrl}/about`,
       lastModified: today,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/blogs/`,
+      url: `${baseUrl}/blogs`,
       lastModified: today,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
-      url: `${baseUrl}/terms/`,
+      url: `${baseUrl}/terms`,
       lastModified: today,
       changeFrequency: "monthly",
       priority: 0.2,
     },
     {
-      url: `${baseUrl}/privacy/`,
+      url: `${baseUrl}/privacy`,
       lastModified: today,
       changeFrequency: "yearly",
       priority: 0.3,
