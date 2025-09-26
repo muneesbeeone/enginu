@@ -1,14 +1,12 @@
 import { MetadataRoute } from "next"
 
-const baseUrl = "https://enginu.munees.co.in"
 
-// Helper function to format date as YYYY-MM-DD
-function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0]
-}
+export const dynamic = "force-static";
+// Helper function to format date as YYYY-MM-D
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const today = formatDate(new Date())
+  const baseUrl = "https://enginu.munees.co.in"
+  const today = new Date()
 
   return [
     {
