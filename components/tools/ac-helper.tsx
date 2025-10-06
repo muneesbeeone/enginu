@@ -73,7 +73,7 @@ export function ACHelper() {
   }
 
   return (
-    <Card>
+    <Card className="border-2 border-border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -87,12 +87,12 @@ export function ACHelper() {
         </div>
         <CardDescription>Calculate BTU requirements for air conditioning systems</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="room-type">Room Type</Label>
+      <CardContent className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="space-y-2">
+            <Label htmlFor="room-type" className="text-sm font-medium">Room Type</Label>
             <Select value={roomType} onValueChange={(value) => setRoomType(value as string)}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full border-2">
                 <SelectValue placeholder="Select room type" />
               </SelectTrigger>
               <SelectContent>
@@ -104,10 +104,10 @@ export function ACHelper() {
               </SelectContent>
             </Select>
           </div>
-          <div>
-            <Label htmlFor="insulation">Insulation Quality</Label>
+          <div className="space-y-2">
+            <Label htmlFor="insulation" className="text-sm font-medium">Insulation Quality</Label>
             <Select value={insulation} onValueChange={(value) => setInsulation(value as string)}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full border-2">
                 <SelectValue placeholder="Select insulation" />
               </SelectTrigger>
               <SelectContent>
@@ -121,49 +121,52 @@ export function ACHelper() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <Label htmlFor="length">Length (m)</Label>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="space-y-2">
+            <Label htmlFor="length" className="text-sm font-medium">Length (m)</Label>
             <Input
               id="length"
               type="number"
               value={length}
               onChange={(e) => setLength(e.target.value)}
               placeholder="Enter length"
+              className="w-full border-2"
             />
           </div>
-          <div>
-            <Label htmlFor="width">Width (m)</Label>
+          <div className="space-y-2">
+            <Label htmlFor="width" className="text-sm font-medium">Width (m)</Label>
             <Input
               id="width"
               type="number"
               value={width}
               onChange={(e) => setWidth(e.target.value)}
               placeholder="Enter width"
+              className="w-full border-2"
             />
           </div>
-          <div>
-            <Label htmlFor="occupants">Occupants</Label>
+          <div className="space-y-2">
+            <Label htmlFor="occupants" className="text-sm font-medium">Occupants</Label>
             <Input
               id="occupants"
               type="number"
               value={occupants}
               onChange={(e) => setOccupants(e.target.value)}
               placeholder="Number of people"
+              className="w-full border-2"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="rounded-lg bg-muted p-4 text-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">BTU/hr Required</Label>
             <p className="text-2xl font-bold text-primary">{result?.btu.toLocaleString("en-US", { maximumFractionDigits: 0 }) ?? "..."}</p>
           </div>
-          <div className="rounded-lg bg-muted p-4 text-center">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Tons Required</Label>
             <p className="text-2xl font-bold text-primary">{result?.tons.toFixed(2) ?? "..."}</p>
           </div>
-          <div className="rounded-lg bg-muted p-4 text-center">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Watts Required</Label>
             <p className="text-2xl font-bold text-primary">
               {result?.watts.toLocaleString("en-US", { maximumFractionDigits: 0 }) ?? "..."}

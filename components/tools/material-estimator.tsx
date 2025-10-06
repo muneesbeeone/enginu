@@ -59,7 +59,7 @@ export function MaterialEstimator() {
   }
 
   return (
-    <Card>
+    <Card className="border-2 border-border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -74,10 +74,10 @@ export function MaterialEstimator() {
         <CardDescription>Calculate concrete and steel requirements for construction projects</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div>
-          <Label htmlFor="project-type">Project Type</Label>
+        <div className="space-y-2 p-4 border border-border rounded-lg bg-muted/30">
+          <Label htmlFor="project-type" className="text-sm font-medium">Project Type</Label>
           <Select value={projectType} onValueChange={(value) => setProjectType(value as string)}>
-            <SelectTrigger>
+            <SelectTrigger className="w-full border-2">
               <SelectValue placeholder="Select project type" />
             </SelectTrigger>
             <SelectContent>
@@ -89,53 +89,56 @@ export function MaterialEstimator() {
           </Select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div>
-            <Label htmlFor="length">Length (m)</Label>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="space-y-2">
+            <Label htmlFor="length" className="text-sm font-medium">Length (m)</Label>
             <Input
               id="length"
               type="number"
               value={length}
               onChange={(e) => setLength(e.target.value)}
               placeholder="Enter length"
+              className="w-full border-2"
             />
           </div>
-          <div>
-            <Label htmlFor="width">Width (m)</Label>
+          <div className="space-y-2">
+            <Label htmlFor="width" className="text-sm font-medium">Width (m)</Label>
             <Input
               id="width"
               type="number"
               value={width}
               onChange={(e) => setWidth(e.target.value)}
               placeholder="Enter width"
+              className="w-full border-2"
             />
           </div>
-          <div>
-            <Label htmlFor="height">Height/Thickness (m)</Label>
+          <div className="space-y-2">
+            <Label htmlFor="height" className="text-sm font-medium">Height/Thickness (m)</Label>
             <Input
               id="height"
               type="number"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
               placeholder="Enter height"
+              className="w-full border-2"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="rounded-lg bg-muted p-4 text-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Total Volume</Label>
             <p className="text-2xl font-bold text-primary">{results?.volume.toFixed(2) ?? "..."} m³</p>
             <p className="text-xs text-muted-foreground/80">
               {length || "L"} × {width || "W"} × {height || "H"}
             </p>
           </div>
-          <div className="rounded-lg bg-muted p-4 text-center">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Concrete Required</Label>
             <p className="text-2xl font-bold text-primary">{results?.concrete.toFixed(2) ?? "..."} m³</p>
             <p className="text-xs text-muted-foreground/80">Equal to volume</p>
           </div>
-          <div className="rounded-lg bg-muted p-4 text-center">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Steel Required</Label>
             <p className="text-2xl font-bold text-primary">{results?.steel.toFixed(1) ?? "..."} kg</p>
             <p className="text-xs text-muted-foreground/80">

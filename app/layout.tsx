@@ -47,6 +47,15 @@ export const metadata: Metadata = {
     "Ohm's law",
     "pipe flow calculator",
     "duct sizing",
+    "hvac duct calculator",
+    "duct sizing calculator",
+    "ventilation calculator",
+    "pipe sizing calculator",
+    "scale calculator",
+    "material estimator",
+    "steel weight calculator",
+    "unit conversion",
+    "engineering tools online",
     "BTU calculator",
     // Broader Industries
     "construction",
@@ -61,6 +70,10 @@ export const metadata: Metadata = {
     "conversion",
   ],
   authors: [{ name: "Muhammed Munees" }],
+  alternates: {
+    canonical: "/",
+  },
+  themeColor: "#0ea5e9",
   openGraph: {
     title: "Enginu - Engineering Utilities for Everyone",
     description: "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers.",
@@ -103,7 +116,7 @@ export default function RootLayout({
       "@type": "Organization",
       name: "Enginu",
       url: "https://enginu.munees.co.in",
-      logo: "https://enginu.munees.co.in/og-image.png",
+      logo: "https://enginu.munees.co.in/og_image.png",
       description:
         "Professional engineering tools for civil engineers, draftsmen, plumbers, and A/C workers. Unit converters, material estimators, 3D viewer, and more.",
     },

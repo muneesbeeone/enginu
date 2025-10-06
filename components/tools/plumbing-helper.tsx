@@ -66,7 +66,7 @@ export function PlumbingHelper() {
   }
 
   return (
-    <Card>
+    <Card className="border-2 border-border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -83,10 +83,10 @@ export function PlumbingHelper() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div>
-          <Label htmlFor="pipe-type">Pipe Material</Label>
+        <div className="space-y-2 p-4 border border-border rounded-lg bg-muted/30">
+          <Label htmlFor="pipe-type" className="text-sm font-medium">Pipe Material</Label>
           <Select value={pipeType} onValueChange={setPipeType}>
-            <SelectTrigger>
+            <SelectTrigger className="w-full border-2">
               <SelectValue placeholder="Select pipe material" />
             </SelectTrigger>
             <SelectContent>
@@ -99,38 +99,40 @@ export function PlumbingHelper() {
           </Select>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <Label htmlFor="flow-rate">Flow Rate (L/min)</Label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="space-y-2">
+            <Label htmlFor="flow-rate" className="text-sm font-medium">Flow Rate (L/min)</Label>
             <Input
               id="flow-rate"
               type="number"
               value={flowRate}
               onChange={(e) => setFlowRate(e.target.value)}
               placeholder="Enter flow rate"
+              className="w-full border-2"
             />
           </div>
-          <div>
-            <Label htmlFor="velocity">Velocity (m/s)</Label>
+          <div className="space-y-2">
+            <Label htmlFor="velocity" className="text-sm font-medium">Velocity (m/s)</Label>
             <Input
               id="velocity"
               type="number"
               value={velocity}
               onChange={(e) => setVelocity(e.target.value)}
               placeholder="Recommended: 1.5-3.0"
+              className="w-full border-2"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div className="rounded-lg bg-muted p-4 text-center">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 p-4 border border-border rounded-lg bg-muted/30">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Required Diameter</Label>
             <p className="text-2xl font-bold text-primary">{result?.diameter.toFixed(1) ?? "..."} mm</p>
             <p className="text-xs text-muted-foreground/80">
               Based on Q = A × V
             </p>
           </div>
-          <div className="rounded-lg bg-muted p-4 text-center">
+          <div className="rounded-lg bg-muted p-4 text-center border border-border">
             <Label className="text-sm font-medium text-muted-foreground">Recommended Nominal Size</Label>
             <p className="text-2xl font-bold text-primary">{result?.nominalSize ?? "..."}</p>
             <p className="text-xs text-muted-foreground/80">

@@ -5,9 +5,30 @@ import { MaterialEstimator } from "@/components/tools/material-estimator"
 import { ScaleCalculator } from "@/components/tools/drafting-helper"
 import { PlumbingHelper } from "@/components/tools/plumbing-helper"
 import { ACHelper } from "@/components/tools/ac-helper"
+import { HVACDuctCalculator } from "@/components/tools/hvac-duct-calculator"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Calculator, Building2, Ratio, Droplets, Thermometer } from "lucide-react"
+import { Calculator, Building2, Ratio, Droplets, Thermometer, Wind } from "lucide-react"
 import AdSense from "@/components/AdSense"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Engineering Tools - Unit Converter, Materials, Scale, Plumbing, HVAC | Enginu",
+  description:
+    "Explore Enginu's suite of engineering tools: unit converter, material estimator, scale calculator, plumbing helper, and HVAC duct sizing calculator.",
+  keywords: [
+    "engineering tools",
+    "unit converter",
+    "material estimator",
+    "scale calculator",
+    "plumbing calculator",
+    "pipe sizing calculator",
+    "hvac duct calculator",
+    "duct sizing calculator",
+    "engineering calculators",
+    "construction calculators",
+  ],
+  alternates: { canonical: "/tools" },
+}
 
 export default function ToolsPage() {
   return (
@@ -45,6 +66,10 @@ export default function ToolsPage() {
                   <Thermometer className="h-4 w-4" />
                   <span>A/C Helper</span>
                 </TabsTrigger>
+                <TabsTrigger value="hvac" className="flex items-center gap-2">
+                  <Wind className="h-4 w-4" />
+                  <span>HVAC Duct</span>
+                </TabsTrigger>
               </TabsList>
             </div>
 
@@ -66,6 +91,10 @@ export default function ToolsPage() {
 
             <TabsContent value="ac" className="space-y-6">
               <ACHelper />
+            </TabsContent>
+
+            <TabsContent value="hvac" className="space-y-6">
+              <HVACDuctCalculator />
             </TabsContent>
           </Tabs>
           <div className="mt-6 flex justify-center">

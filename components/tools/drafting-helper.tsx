@@ -52,7 +52,7 @@ export function ScaleCalculator() {
   }
 
   return (
-    <Card>
+    <Card className="border-2 border-border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -70,10 +70,10 @@ export function ScaleCalculator() {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div>
-          <Label htmlFor="scale">Scale</Label>
+        <div className="space-y-2 p-4 border border-border rounded-lg bg-muted/30">
+          <Label htmlFor="scale" className="text-sm font-medium">Scale</Label>
           <Select value={scale} onValueChange={setScale}>
-            <SelectTrigger id="scale">
+            <SelectTrigger id="scale" className="w-full border-2">
               <SelectValue placeholder="Select a scale" />
             </SelectTrigger>
             <SelectContent>
@@ -88,16 +88,17 @@ export function ScaleCalculator() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Real to Paper */}
-          <div className="space-y-4 rounded-lg border p-4">
+          <div className="space-y-4 rounded-lg border border-border p-4 bg-muted/20">
             <h3 className="font-semibold text-foreground">Real-World to Scaled</h3>
             <div>
-              <Label htmlFor="real-dimension">Real-World Dimension (mm)</Label>
+              <Label htmlFor="real-dimension" className="text-sm font-medium">Real-World Dimension (mm)</Label>
               <Input
                 id="real-dimension"
                 type="number"
                 value={realDimension}
                 onChange={(e) => setRealDimension(e.target.value)}
                 placeholder="e.g., 1000"
+                className="w-full border-2"
               />
             </div>
             <div className="min-h-[90px] rounded-lg bg-muted p-4">
@@ -110,16 +111,17 @@ export function ScaleCalculator() {
           </div>
 
           {/* Paper to Real */}
-          <div className="space-y-4 rounded-lg border p-4">
+          <div className="space-y-4 rounded-lg border border-border p-4 bg-muted/20">
             <h3 className="font-semibold text-foreground">Scaled to Real-World</h3>
             <div>
-              <Label htmlFor="scaled-dimension-input">Scaled Dimension (mm)</Label>
+              <Label htmlFor="scaled-dimension-input" className="text-sm font-medium">Scaled Dimension (mm)</Label>
               <Input
                 id="scaled-dimension-input"
                 type="number"
                 value={scaledDimensionInput}
                 onChange={(e) => setScaledDimensionInput(e.target.value)}
                 placeholder="e.g., 10"
+                className="w-full border-2"
               />
             </div>
             <div className="min-h-[90px] rounded-lg bg-muted p-4">

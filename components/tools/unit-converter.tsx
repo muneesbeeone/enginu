@@ -88,7 +88,7 @@ export function UnitConverter() {
   }
 
   return (
-    <Card>
+    <Card className="border-2 border-border">
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -103,8 +103,8 @@ export function UnitConverter() {
         <CardDescription>Convert between different units of measurement</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div>
-          <Label htmlFor="category">Category</Label>
+        <div className="space-y-2 p-4 border border-border rounded-lg bg-muted/30">
+          <Label htmlFor="category" className="text-sm font-medium">Category</Label>
           <Select
             value={category}
             onValueChange={(value: keyof typeof conversions) => {
@@ -113,7 +113,7 @@ export function UnitConverter() {
               setToUnit("")
             }}
           >
-            <SelectTrigger>
+            <SelectTrigger className="w-full border-2">
               <SelectValue placeholder="Select category" />
             </SelectTrigger>
             <SelectContent>
@@ -126,19 +126,20 @@ export function UnitConverter() {
           </Select>
         </div>
 
-        <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
+        <div className="grid grid-cols-1 items-center gap-6 md:grid-cols-[1fr_auto_1fr] p-4 border border-border rounded-lg bg-muted/30">
           {/* From */}
           <div className="space-y-2">
-            <Label htmlFor="from-unit">From</Label>
+            <Label htmlFor="from-unit" className="text-sm font-medium">From</Label>
             <Input
               id="input-value"
               type="number"
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
               placeholder="Enter value"
+              className="w-full border-2"
             />
             <Select value={fromUnit} onValueChange={setFromUnit}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full border-2">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
               <SelectContent>
@@ -159,12 +160,12 @@ export function UnitConverter() {
 
           {/* To */}
           <div className="space-y-2">
-            <Label htmlFor="to-unit">To</Label>
+            <Label htmlFor="to-unit" className="text-sm font-medium">To</Label>
             <div className="flex h-10 w-full items-center rounded-md border border-input bg-muted px-3 py-2 text-2xl font-bold text-primary">
               {result?.toLocaleString(undefined, { maximumFractionDigits: 6 }) ?? "..."}
             </div>
             <Select value={toUnit} onValueChange={setToUnit}>
-              <SelectTrigger>
+              <SelectTrigger className="w-full border-2">
                 <SelectValue placeholder="Select unit" />
               </SelectTrigger>
               <SelectContent>
